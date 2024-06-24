@@ -1,10 +1,18 @@
 package com.sovcombank.qa.page;
 
+import lombok.Getter;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
+import static java.awt.SystemColor.window;
+
+@Getter
 public class PracticeFormPage {
     public WebDriver driver;
 
@@ -32,13 +40,13 @@ public class PracticeFormPage {
     @FindBy(xpath = "//label[@for='gender-radio-3']")
     private WebElement radioButtonOther;
 
-    @FindBy(xpath = "//input[@for='hobbies-checkbox-1']")
+    @FindBy(xpath = "//input[@id='hobbies-checkbox-1']")
     private WebElement checkBoxSports;
 
-    @FindBy(xpath = "//input[@for='hobbies-checkbox-2']")
+    @FindBy(xpath = "//input[@id='hobbies-checkbox-2']")
     private WebElement checkBoxReading;
 
-    @FindBy(xpath = "//input[@for='hobbies-checkbox-3']")
+    @FindBy(xpath = "//label[@for='hobbies-checkbox-3']")
     private WebElement checkBoxMusic;
 
     @FindBy(id="userNumber")
@@ -58,11 +66,29 @@ public class PracticeFormPage {
     @FindBy(id="currentAddress")
     private WebElement currentAddress;
 
-    @FindBy(xpath = "//*[contains(text(),'Select State')]")
+    @FindBy(className = "css-tlfecz-indicatorContainer")
     private WebElement selectState;
 
     @FindBy(xpath = "//*[contains(text(),'Select City')]")
     private WebElement selectCity;
+
+    @FindBy(id = "submit")
+    private WebElement submit;
+
+    @FindBy(xpath = "//span[cotains(text(),'© 2013-2020 TOOLSQA.COM | ALL RIGHTS RESERVED.')]")
+    private WebElement down;
+
+    public void scroll(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        actions.perform();
+
+
+    }
+    public WebElement pressEnter(WebElement element){
+        $(element).pressEnter();
+        return element;
+    }
 
     public void inputFirstNameLine(String name){
         firstName.sendKeys(name);
@@ -105,10 +131,13 @@ public class PracticeFormPage {
     }
 
     public void selectCheckBoxMusic(){
+        scroll(down);
         checkBoxMusic.click();
     }
+
     public void inputSubject(String sub){
         subjects.sendKeys(sub);
+        pressEnter(subjects);
     }
 
     public void selectPicture(){
@@ -116,10 +145,21 @@ public class PracticeFormPage {
     }
 
     public void inputCurrentAddress(String address){
+        scroll(currentAddress);
         currentAddress.sendKeys(address);
     }
 
     public void selectUserState(){
+        selectState.click();
+        pressEnter(selectState);
+    }
 
+    public void selectUserCity(){
+        selectCity.click();
+        pressEnter(selectCity);
+    }
+
+    public void clickSubmit(){
+        submit.click();
     }
 }

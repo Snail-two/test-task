@@ -7,15 +7,23 @@ import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Random;
 
 abstract public class AbstractDemoQa {
 
     public static WebDriver driver;
     public static WebDriverWait wait;
     public static ChromeOptions options;
+
+    public String randomNumber(){
+        Random random = new Random();
+        long randomTenDigitNumber = 1000000000L + random.nextInt((int) 9000000000L);
+        return String.valueOf(randomTenDigitNumber);
+    }
 
     @BeforeAll
     public static void setup() {
