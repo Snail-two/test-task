@@ -19,6 +19,7 @@ public class ConfProperties {
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Файл не найден");
             //обработка возможного исключения (нет файла и т.п.)
         } finally {
             if (fileInputStream != null)
