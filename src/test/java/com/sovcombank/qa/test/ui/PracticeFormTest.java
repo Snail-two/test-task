@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class PracticeFormTest extends PracticeFormStep  {
+    //TODO: Добавить негативные кейсы (накидать чек листов)
 
     @Test
     @DisplayName("Заполнение корректными данными")
