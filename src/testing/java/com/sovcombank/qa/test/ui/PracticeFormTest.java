@@ -1,4 +1,4 @@
-package com.sovcombank.qa.ui;
+package com.sovcombank.qa.test.ui;
 
 import com.sovcombank.qa.page.PracticeFormPage;
 import com.sovcombank.qa.steps.PracticeFormStep;

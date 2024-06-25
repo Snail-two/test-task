@@ -17,8 +17,8 @@ public class PracticeFormStep extends AbstractDemoQa {
         page.inputSubject("English");
         page.selectCheckBoxMusic();
         page.inputCurrentAddress("text");
-//        page.selectUserState();
-//        page.selectUserCity();
+        page.selectUserState();
+        page.selectUserCity();
         page.clickSubmit();
         return page;
     }
