@@ -16,13 +16,13 @@ public class SovcomMainPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(className = "button_primary")
+    @FindBy(css = "a > .v-size--default div")
     private WebElement vacancy;
 
     @FindBy(className = "close-btn")
     private WebElement modalWindowButtonClose;
 
-    @FindBy(className = "chat-bot-modal__container")
+    @FindBy(css = ".close-btn img")
     private WebElement modalWindow;
 
     public void clickVacancy(){
