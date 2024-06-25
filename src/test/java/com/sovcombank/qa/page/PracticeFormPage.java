@@ -1,6 +1,7 @@
 package com.sovcombank.qa.page;
 
 import lombok.Getter;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -66,25 +67,28 @@ public class PracticeFormPage {
     @FindBy(id="currentAddress")
     private WebElement currentAddress;
 
-    @FindBy(className = "css-tlfecz-indicatorContainer")
-    private WebElement selectState;
+    @FindBy(css = "#state .css-1hwfws3")
+    private WebElement stateDropdown;
+
+    @FindBy(id= "react-select-3-option-0")
+    private WebElement stateDropdownIndicator;
 
     @FindBy(xpath = "//*[contains(text(),'Select City')]")
     private WebElement selectCity;
 
+    @FindBy(id = "react-select-4-option-0")
+    private WebElement cityDropdownIndicator;
+
     @FindBy(id = "submit")
     private WebElement submit;
 
-    @FindBy(xpath = "//span[cotains(text(),'© 2013-2020 TOOLSQA.COM | ALL RIGHTS RESERVED.')]")
+    @FindBy(id= "Ad.Plus-970x250-2")
     private WebElement down;
 
-    public void scroll(WebElement element){
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        actions.perform();
-
-
+    public void scroll(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
     public WebElement pressEnter(WebElement element){
         $(element).pressEnter();
         return element;
@@ -145,21 +149,21 @@ public class PracticeFormPage {
     }
 
     public void inputCurrentAddress(String address){
-        scroll(currentAddress);
         currentAddress.sendKeys(address);
     }
 
     public void selectUserState(){
-        selectState.click();
-        pressEnter(selectState);
+        stateDropdown.click();
+        stateDropdownIndicator.click();
     }
 
     public void selectUserCity(){
         selectCity.click();
-        pressEnter(selectCity);
+        cityDropdownIndicator.click();
     }
 
     public void clickSubmit(){
         submit.click();
     }
+
 }
