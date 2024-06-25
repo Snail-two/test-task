@@ -1,5 +1,6 @@
 package com.sovcombank.qa;
 
+import lombok.Getter;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.Random;
-
+@Getter
+//TODO: добавить логирование
 abstract public class AbstractDemoQa {
     public static WebDriver driver;
     public static WebDriverWait wait;

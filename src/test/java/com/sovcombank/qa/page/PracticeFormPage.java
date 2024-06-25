@@ -2,19 +2,13 @@ package com.sovcombank.qa.page;
 
 import lombok.Getter;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.io.FileNotFoundException;
-import java.util.logging.Logger;
-
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static java.awt.SystemColor.window;
 
 @Getter
 public class PracticeFormPage {
@@ -23,6 +17,10 @@ public class PracticeFormPage {
     public PracticeFormPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public PracticeFormPage(){
+
     }
 
 
@@ -65,7 +63,6 @@ public class PracticeFormPage {
 
     @FindBy(id = "uploadPicture")
     private WebElement selectPicture;
-    //добавить взаимодействие с проводником для выбора фото
 
     @FindBy(id="currentAddress")
     private WebElement currentAddress;
@@ -88,6 +85,9 @@ public class PracticeFormPage {
     @FindBy(id= "Ad.Plus-970x250-2")
     private WebElement down;
 
+    @FindBy(css = ".modal-content")
+    private WebElement modalContent;
+
     public void scroll(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
@@ -97,16 +97,18 @@ public class PracticeFormPage {
         return element;
     }
 
-    public void inputFirstNameLine(String name){
+    public String inputFirstNameLine(String name){
         firstName.sendKeys(name);
+        return name;
     }
 
     public void inputLastNameLine(String secondName){
         lastName.sendKeys(secondName);
     }
 
-    public void inputUserEmailLine(String email){
+    public String inputUserEmailLine(String email){
         userEmail.sendKeys(email);
+        return email;
     }
 
     public void selectGenderMale(){
@@ -121,12 +123,13 @@ public class PracticeFormPage {
         radioButtonOther.click();
     }
 
-    public void inputUserNumberLine(String number){
+    public String inputUserNumberLine(String number){
         userNumber.sendKeys(number);
+        return number;
     }
 
     public void selectUserBirthsDay(){
-
+        //TODO: добавить взаимодействие с календарем
     }
 
     public void selectCheckBoxSports(){
@@ -142,23 +145,24 @@ public class PracticeFormPage {
         checkBoxMusic.click();
     }
 
-    public void inputSubject(String sub){
+    public String inputSubject(String sub){
         subjects.sendKeys(sub);
         pressEnter(subjects);
+        return sub;
     }
 
     public void uploadPicture(String filePath){
         try {
-            String absoluteFilePath = System.getProperty("user.dir") + "/" + filePath;
-            selectPicture.sendKeys(absoluteFilePath);
+            selectPicture.sendKeys(filePath);
         } catch (IllegalArgumentException e){
             e.getStackTrace();
             System.out.println("Файл не найден");
         }
     }
 
-    public void inputCurrentAddress(String address){
+    public String inputCurrentAddress(String address){
         currentAddress.sendKeys(address);
+        return address;
     }
 
     public void selectUserState(){
