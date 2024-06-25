@@ -9,6 +9,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Logger;
+
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static java.awt.SystemColor.window;
@@ -60,7 +63,7 @@ public class PracticeFormPage {
     @FindBy(id="subjectsInput")
     private WebElement subjects;
 
-    @FindBy(xpath = "//*[contains(text(),'Select picture')]")
+    @FindBy(id = "uploadPicture")
     private WebElement selectPicture;
     //добавить взаимодействие с проводником для выбора фото
 
@@ -144,8 +147,14 @@ public class PracticeFormPage {
         pressEnter(subjects);
     }
 
-    public void selectPicture(){
-
+    public void uploadPicture(String filePath){
+        try {
+            String absoluteFilePath = System.getProperty("user.dir") + "/" + filePath;
+            selectPicture.sendKeys(absoluteFilePath);
+        } catch (IllegalArgumentException e){
+            e.getStackTrace();
+            System.out.println("Файл не найден");
+        }
     }
 
     public void inputCurrentAddress(String address){

@@ -16,6 +16,7 @@ public class PracticeFormStep extends AbstractDemoQa {
         page.inputUserNumberLine(randomNumber());
         page.inputSubject("English");
         page.selectCheckBoxMusic();
+        page.uploadPicture("image.jpg");
         page.inputCurrentAddress("text");
         page.selectUserState();
         page.selectUserCity();
