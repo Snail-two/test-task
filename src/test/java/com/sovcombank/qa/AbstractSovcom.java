@@ -1,6 +1,5 @@
 package com.sovcombank.qa;
 
-import lombok.Getter;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
@@ -10,18 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.Random;
-@Getter
-//TODO: добавить логирование
-abstract public class AbstractDemoQa {
+
+abstract public class AbstractSovcom {
     public static WebDriver driver;
     public static WebDriverWait wait;
     public static ChromeOptions options;
-
-    public String randomNumber(){
-        Random random = new Random();
-        long randomTenDigitNumber = 1000000000L + random.nextInt((int) 9000000000L);
-        return String.valueOf(randomTenDigitNumber);
-    }
 
     @BeforeAll
     public static void setup() {
@@ -37,7 +29,7 @@ abstract public class AbstractDemoQa {
         // окно разворачивается на полный экран
         driver.manage().window().maximize();
         // получение ссылки на страницу входа из файла настроек
-        driver.get(ConfProperties.getProperty("demo_qa"));
+        driver.get(ConfProperties.getProperty("sovcom"));
     }
 
     @AfterAll
