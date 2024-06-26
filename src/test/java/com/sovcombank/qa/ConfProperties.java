@@ -1,5 +1,7 @@
 package com.sovcombank.qa;
 
+import com.sovcombank.qa.test.api.RandomUserApiTest;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import java.io.FileInputStream;
@@ -7,9 +9,10 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfProperties {
-    public WebDriver driver;
     protected static FileInputStream fileInputStream;
     protected static Properties PROPERTIES;
+
+    public static Logger logger = Logger.getLogger(ConfProperties.class.getName());
 
     static {
         try {
@@ -19,8 +22,7 @@ public class ConfProperties {
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Файл не найден");
-            //обработка возможного исключения (нет файла и т.п.)
+            logger.error("Файл не найден");
         } finally {
             if (fileInputStream != null)
                 try {

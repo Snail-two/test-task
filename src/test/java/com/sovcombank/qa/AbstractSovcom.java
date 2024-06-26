@@ -1,5 +1,6 @@
 package com.sovcombank.qa;
 
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
@@ -15,25 +16,23 @@ abstract public class AbstractSovcom {
     public static WebDriverWait wait;
     public static ChromeOptions options;
 
+    public static Logger logger = Logger.getLogger(AbstractSovcom.class.getName());
+
     @BeforeAll
     public static void setup() {
-        // определение пути до драйвера и его настройка
+        logger.info("Открытие браузера");
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
-        // настройка опций Chrome
         options = new ChromeOptions();
         options.addArguments("--disable-notifications");
-        // создание экземпляра драйвера с опциями
         driver = new ChromeDriver(options);
-        // создание экземпляра WebDriverWait
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        // окно разворачивается на полный экран
         driver.manage().window().maximize();
-        // получение ссылки на страницу входа из файла настроек
         driver.get(ConfProperties.getProperty("sovcom"));
     }
 
     @AfterAll
     public static void stopBrowser() throws InterruptedException {
+        logger.info("Закрытие браузера");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
