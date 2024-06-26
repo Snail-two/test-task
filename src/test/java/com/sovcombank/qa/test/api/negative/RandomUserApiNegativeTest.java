@@ -1,12 +1,12 @@
-package com.sovcombank.qa.test.api;
+package com.sovcombank.qa.test.api.negative;
 
-import com.sovcombank.qa.steps.api.RandomUserApiNegativeSteps;
+import com.sovcombank.qa.steps.api.negative.RandomUserApiNegativeSteps;
 import io.restassured.http.Method;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class RandomUserApiNegotiveTest extends RandomUserApiNegativeSteps {
+public class RandomUserApiNegativeTest extends RandomUserApiNegativeSteps {
     public final Method post = Method.POST;
 
     public final Method get = Method.GET;
@@ -17,7 +17,7 @@ public class RandomUserApiNegotiveTest extends RandomUserApiNegativeSteps {
 
     public final Method put = Method.PUT;
 
-    Logger logger = Logger.getLogger(RandomUserApiNegotiveTest.class.getName());
+    Logger logger = Logger.getLogger(RandomUserApiNegativeTest.class.getName());
 
     @Test
     @DisplayName("Вызов метода с некорректным типом запроса")

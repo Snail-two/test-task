@@ -1,6 +1,6 @@
-package com.sovcombank.qa.test.api;
+package com.sovcombank.qa.test.api.positive;
 
-import com.sovcombank.qa.steps.api.RandomUserApiPositiveSteps;
+import com.sovcombank.qa.steps.api.positive.RandomUserApiPositiveSteps;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
