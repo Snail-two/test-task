@@ -1,13 +1,9 @@
 package com.sovcombank.qa.asserts.ui;
 
-import com.sovcombank.qa.AbstractDemoQa;
 import com.sovcombank.qa.page.PracticeFormPage;
-import org.apache.hc.core5.net.WWWFormCodec;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.HashMap;
 import java.util.Map;

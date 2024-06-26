@@ -1,8 +1,6 @@
 package com.sovcombank.qa;
 
-import com.sovcombank.qa.test.api.RandomUserApiTest;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 
 import java.io.FileInputStream;
 import java.io.IOException;

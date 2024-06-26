@@ -9,8 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.List;
-
 public class SovcomJobOpeningsPage extends AbstractSovcom {
 
     private WebDriver driver;

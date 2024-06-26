@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Random;
 @Getter
 abstract public class AbstractDemoQa {
     public static WebDriver driver;
