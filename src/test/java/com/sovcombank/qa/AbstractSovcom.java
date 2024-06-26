@@ -25,7 +25,7 @@ abstract public class AbstractSovcom {
         // создание экземпляра драйвера с опциями
         driver = new ChromeDriver(options);
         // создание экземпляра WebDriverWait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         // окно разворачивается на полный экран
         driver.manage().window().maximize();
         // получение ссылки на страницу входа из файла настроек

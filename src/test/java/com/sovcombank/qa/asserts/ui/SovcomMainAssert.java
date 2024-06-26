@@ -1,4 +1,4 @@
-package com.sovcombank.qa.asserts;
+package com.sovcombank.qa.asserts.ui;
 
 import com.sovcombank.qa.page.SovcomMainPage;
 import lombok.Getter;

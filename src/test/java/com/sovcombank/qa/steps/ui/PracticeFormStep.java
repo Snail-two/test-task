@@ -1,7 +1,7 @@
-package com.sovcombank.qa.steps;
+package com.sovcombank.qa.steps.ui;
 
 import com.sovcombank.qa.AbstractDemoQa;
-import com.sovcombank.qa.asserts.PracticeFormAsserts;
+import com.sovcombank.qa.asserts.ui.PracticeFormAsserts;
 import com.sovcombank.qa.page.PracticeFormPage;
 import io.qameta.allure.Step;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package com.sovcombank.qa.test.ui;
 
 import com.sovcombank.qa.page.PracticeFormPage;
-import com.sovcombank.qa.steps.PracticeFormStep;
+import com.sovcombank.qa.steps.ui.PracticeFormStep;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
