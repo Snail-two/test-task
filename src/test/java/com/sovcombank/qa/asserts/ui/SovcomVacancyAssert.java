@@ -8,23 +8,33 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class SovcomVacancyAssert extends SovcomJobOpeningsPage {
-    private WebDriver driver;
+import static org.junit.Assert.assertTrue;
 
+public class SovcomVacancyAssert extends SovcomJobOpeningsPage {
     public SovcomVacancyAssert(WebDriver driver) {
         super(driver);
     }
 
-    public void checkCityInResults(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("vacancy-main")));
-        List<WebElement> vacancies = driver.findElements(By.className("vacancy-main"));
+    public void checkCityInResults() {
+        List<WebElement> vacancies = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(".section-vacancies .vacancy-main")));
+        List<String> errors = new ArrayList<>();
+
         for (WebElement vacancy : vacancies) {
-            WebElement tags = vacancy.findElement(By.className("vacancy__tags"));
-            String tagsText = tags.getText();
-            Assert.assertTrue("Город не указан как Москва: " + tagsText, tagsText.contains("Москва"));
-            Assert.assertTrue("Компания не указана как Совкомбанк Технологии: " + tagsText, tagsText.contains("Совкомбанк Технологии"));
+            WebElement tagsElement = vacancy.findElement(By.cssSelector(".vacancy__tags span.t2vac"));
+            String tagsText = tagsElement.getText();
+
+            if (!tagsText.contains("Москва")) {
+                errors.add("Город не указан как Москва в вакансии: " + tagsText);
+            }
+
+            if (!tagsText.contains("Совкомбанк Технологии")) {
+                errors.add("Компания не указана как Совкомбанк Технологии в вакансии: " + tagsText);
+            }
         }
+
+        assertTrue("Ошибки: \n" + String.join("\n", errors), errors.isEmpty());
     }
 }

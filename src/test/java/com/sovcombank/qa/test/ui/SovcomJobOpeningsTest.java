@@ -9,11 +9,11 @@ import org.junit.jupiter.api.Test;
 public class SovcomJobOpeningsTest extends AbstractSovcom {
 
     @Test
-    public void vacancy(){
+    public void vacancy() {
         SovcomMainPage mainPage = new SovcomMainPage(driver);
         SovcomJobOpeningsPage vacancyPage = new SovcomJobOpeningsPage(driver);
         SovcomVacancyAssert vacancyAssert = new SovcomVacancyAssert(driver);
-        if (mainPage.checkModalWindow()){
+        if (mainPage.checkModalWindow()) {
             mainPage.closeModalWindow();
         }
         mainPage.clickVacancy();

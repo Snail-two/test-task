@@ -1,7 +1,6 @@
 package com.sovcombank.qa.page;
 
 import com.sovcombank.qa.AbstractSovcom;
-import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
