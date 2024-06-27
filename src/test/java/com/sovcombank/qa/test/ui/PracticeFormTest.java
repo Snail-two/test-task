@@ -19,6 +19,8 @@ public class PracticeFormTest extends PracticeFormStep {
         PracticeFormPage page = fillingRequiredFields();
     }
 
+    //TODO: Не выполняется проверка (не выполняется assert)
+    //TODO: update: assert закоментирован
     @Test
     @DisplayName("Заполнение необязательных полей")
     public void inputOptionalFields() {

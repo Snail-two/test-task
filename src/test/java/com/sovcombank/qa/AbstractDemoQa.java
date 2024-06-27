@@ -3,7 +3,9 @@ package com.sovcombank.qa;
 import lombok.Getter;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,8 +21,8 @@ abstract public class AbstractDemoQa {
 
     public static Logger logger = Logger.getLogger(AbstractDemoQa.class.getName());
 
-    @BeforeAll
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
         logger.info("Открытие браузера");
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
         options = new ChromeOptions();
@@ -31,8 +33,8 @@ abstract public class AbstractDemoQa {
         driver.get(ConfProperties.getProperty("demo_qa"));
     }
 
-    @AfterAll
-    public static void stopBrowser() {
+    @AfterEach
+    public void stopBrowser() {
         logger.info("Закрытие браузера");
         try {
             Thread.sleep(5000);

@@ -61,7 +61,7 @@
                 "type": "string"
               },
               "postcode": {
-                "type": "number"
+                "type": "string"
               },
               "coordinates": {
                 "type": "object",

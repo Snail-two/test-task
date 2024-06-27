@@ -2,7 +2,9 @@ package com.sovcombank.qa;
 
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,8 +19,8 @@ abstract public class AbstractSovcom {
 
     public static Logger logger = Logger.getLogger(AbstractSovcom.class.getName());
 
-    @BeforeAll
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
         logger.info("Открытие браузера");
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
         options = new ChromeOptions();
@@ -29,8 +31,8 @@ abstract public class AbstractSovcom {
         driver.get(ConfProperties.getProperty("sovcom"));
     }
 
-    @AfterAll
-    public static void stopBrowser() {
+    @AfterEach
+    public void stopBrowser() {
         logger.info("Закрытие браузера");
         try {
             Thread.sleep(5000);

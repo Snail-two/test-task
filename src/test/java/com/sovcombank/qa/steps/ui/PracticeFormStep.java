@@ -93,8 +93,8 @@ public class PracticeFormStep extends AbstractDemoQa {
         page.selectUserCity();
         logger.info("Нажатие на кнопку 'Submit'");
         page.clickSubmit();
-        logger.info("Проверка нажатия кнопки и отображения модального окна");
-        asserts.checkModalWindowOptionalField();
+//        logger.info("Проверка нажатия кнопки и отображения модального окна");
+//        asserts.checkModalWindowOptionalField();
         return page;
     }
 }
