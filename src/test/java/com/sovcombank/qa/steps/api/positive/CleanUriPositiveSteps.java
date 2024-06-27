@@ -11,7 +11,7 @@ import static com.sovcombank.qa.endpoints.Endpoints.URL_CLEAN;
 public class CleanUriPositiveSteps {
 
     @Step
-    public Response sendPositiveRequest(String body){
+    public Response sendPositiveRequest(String body) {
         Response response = RestAssured.given().log().all()
                 .when()
                 .contentType(ContentType.JSON)

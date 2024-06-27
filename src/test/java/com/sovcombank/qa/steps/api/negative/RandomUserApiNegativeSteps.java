@@ -11,7 +11,7 @@ import static com.sovcombank.qa.endpoints.Endpoints.URL_RANDOM_API;
 
 public class RandomUserApiNegativeSteps {
     @Step
-    public Response sendNegativeRequestUseNegativeMethod(Method method){
+    public Response sendNegativeRequestUseNegativeMethod(Method method) {
         Response response = RestAssured.given().log().all()
                 .when()
                 .contentType(ContentType.JSON)
@@ -22,7 +22,7 @@ public class RandomUserApiNegativeSteps {
     }
 
     @Step
-    public Response sendRequestOnNegativeEndpoint(String endpoint){
+    public Response sendRequestOnNegativeEndpoint(String endpoint) {
         Response response = RestAssured.given().log().all()
                 .when()
                 .contentType(ContentType.JSON)

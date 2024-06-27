@@ -12,6 +12,17 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 
 public class RandomUserApiPositiveTest extends RandomUserApiPositiveSteps {
 
+    /*
+    Чек лист для random user:
+    1. Вызвать метод без параметров
+    2. Вызвать метод с параметрами
+    3. Вызвать метод с некорректным типом запроса
+    4. вызвать метод на несуществующий endpoint
+    5. Проверить ответ на json схему
+    6. Проверить ответ на статус код
+    7. Проверить что переданный в параметре аргумент совпадает с значением в ответе
+     */
+
     Logger logger = Logger.getLogger(RandomUserApiPositiveTest.class.getName());
 
     @Test

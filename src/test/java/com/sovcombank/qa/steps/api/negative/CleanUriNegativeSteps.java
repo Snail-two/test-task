@@ -12,7 +12,7 @@ import static com.sovcombank.qa.endpoints.Endpoints.URL_CLEAN;
 public class CleanUriNegativeSteps {
 
     @Step
-    public Response sendRequestNullBody(){
+    public Response sendRequestNullBody() {
         Response response = RestAssured.given().log().all()
                 .when()
                 .contentType(ContentType.JSON)
@@ -23,7 +23,7 @@ public class CleanUriNegativeSteps {
     }
 
     @Step
-    public Response sendRequestInvalidMethod(Method method, String body){
+    public Response sendRequestInvalidMethod(Method method, String body) {
         Response response = RestAssured.given().log().all()
                 .when()
                 .contentType(ContentType.JSON)

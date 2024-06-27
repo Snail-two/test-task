@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class LinkProperties {
+public class ImageProperties {
     protected static FileInputStream fileInputStream;
     protected static Properties PROPERTIES;
 
@@ -14,7 +14,7 @@ public class LinkProperties {
 
     static {
         try {
-            fileInputStream = new FileInputStream("src/test/resources/link.properties");
+            fileInputStream = new FileInputStream("src/test/resources/");
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {

@@ -13,6 +13,16 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 
 public class CleanUriNegativeTest extends CleanUriNegativeSteps {
 
+        /*
+    Чек лист для ссылок:
+    1. Вызвать метод с корректными данными
+    2. Вызвать метод без тела запроса
+    3. Вызвать метод с невалидными типами запроса
+    4. Проверить ответ на json схему
+    5. Проверить ответ на статус код
+    6. Проверить ответ на текст ошибки
+     */
+
     public final Method get = Method.GET;
     public final Method patch = Method.PATCH;
     public final Method post = Method.POST;
@@ -20,9 +30,10 @@ public class CleanUriNegativeTest extends CleanUriNegativeSteps {
     public final Method delete = Method.DELETE;
 
     Logger logger = Logger.getLogger(CleanUriNegativeTest.class);
+
     @Test
     @DisplayName("Вызов метода без тела запроса")
-    public void sendRequestNullBodyTest(){
+    public void sendRequestNullBodyTest() {
         logger.info("Вызов метода");
         var response = sendRequestNullBody();
 
@@ -39,7 +50,7 @@ public class CleanUriNegativeTest extends CleanUriNegativeSteps {
 
     @Test
     @DisplayName("Вызов метода с невалидным типом запроса")
-    public void sendRequestInvalidMethodTest(){
+    public void sendRequestInvalidMethodTest() {
         var body = getResourceAsString("body_url.json")
                 .replace("value", LinkProperties.getProperty(("url_1")));
         logger.info("Вызов метода с типом запроса 'GET'");

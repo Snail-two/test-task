@@ -1,11 +1,13 @@
 package com.sovcombank.qa.page;
 
 import lombok.Getter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -18,18 +20,14 @@ public class PracticeFormPage {
         PageFactory.initElements(driver, this);
     }
 
-    public PracticeFormPage(){
-
-    }
-
 
     @FindBy(id = "firstName")
     private WebElement firstName;
 
-    @FindBy(id="lastName")
+    @FindBy(id = "lastName")
     private WebElement lastName;
 
-    @FindBy(id="userEmail")
+    @FindBy(id = "userEmail")
     private WebElement userEmail;
 
     @FindBy(xpath = "//label[@for='gender-radio-1']")
@@ -50,26 +48,25 @@ public class PracticeFormPage {
     @FindBy(xpath = "//label[@for='hobbies-checkbox-3']")
     private WebElement checkBoxMusic;
 
-    @FindBy(id="userNumber")
+    @FindBy(id = "userNumber")
     private WebElement userNumber;
 
-    @FindBy(id="dateOfBirthInput")
+    @FindBy(id = "dateOfBirthInput")
     private WebElement dateOfBirth;
-    //Нужно добавить взаимодействие с календарем
 
-    @FindBy(id="subjectsInput")
+    @FindBy(id = "subjectsInput")
     private WebElement subjects;
 
     @FindBy(id = "uploadPicture")
     private WebElement selectPicture;
 
-    @FindBy(id="currentAddress")
+    @FindBy(id = "currentAddress")
     private WebElement currentAddress;
 
     @FindBy(css = "#state .css-1hwfws3")
     private WebElement stateDropdown;
 
-    @FindBy(id= "react-select-3-option-0")
+    @FindBy(id = "react-select-3-option-0")
     private WebElement stateDropdownIndicator;
 
     @FindBy(xpath = "//*[contains(text(),'Select City')]")
@@ -81,7 +78,7 @@ public class PracticeFormPage {
     @FindBy(id = "submit")
     private WebElement submit;
 
-    @FindBy(id= "Ad.Plus-970x250-2")
+    @FindBy(id = "Ad.Plus-970x250-2")
     private WebElement down;
 
     @FindBy(css = ".modal-content")
@@ -91,90 +88,100 @@ public class PracticeFormPage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public WebElement pressEnter(WebElement element){
+    public WebElement pressEnter(WebElement element) {
         $(element).pressEnter();
         return element;
     }
 
-    public String inputFirstNameLine(String name){
+    public String inputFirstNameLine(String name) {
         firstName.sendKeys(name);
         return name;
     }
 
-    public void inputLastNameLine(String secondName){
+    public void inputLastNameLine(String secondName) {
         lastName.sendKeys(secondName);
     }
 
-    public String inputUserEmailLine(String email){
+    public String inputUserEmailLine(String email) {
         userEmail.sendKeys(email);
         return email;
     }
 
-    public void selectGenderMale(){
+    public void selectGenderMale() {
         radioButtonMale.click();
     }
 
-    public void selectGenderFemale(){
+    public void selectGenderFemale() {
         radioButtonFemale.click();
     }
 
-    public void selectGenderOther(){
+    public void selectGenderOther() {
         radioButtonOther.click();
     }
 
-    public String inputUserNumberLine(String number){
+    public String inputUserNumberLine(String number) {
         userNumber.sendKeys(number);
+        scroll(submit);
         return number;
     }
 
-    public void selectUserBirthsDay(){
-        //TODO: добавить взаимодействие с календарем
+    public void selectUserBirthsDay() {
+        dateOfBirth.click();
+        WebElement monthDropdown = driver.findElement(By.cssSelector(".react-datepicker__month-select"));
+        Select selectMonth = new Select(monthDropdown);
+        selectMonth.selectByVisibleText("April");
+
+        // Находим и кликаем на 9 число
+        WebElement day9 = driver.findElement(By.xpath("//div[@class='react-datepicker__day react-datepicker__day--009']"));
+        day9.click();
+        pressEnter(dateOfBirth);
     }
 
-    public void selectCheckBoxSports(){
+    public void selectCheckBoxSports() {
         checkBoxSports.click();
     }
 
-    public void selectCheckBoxReading(){
+    public void selectCheckBoxReading() {
         checkBoxReading.click();
     }
 
-    public void selectCheckBoxMusic(){
+    public void selectCheckBoxMusic() {
         scroll(down);
         checkBoxMusic.click();
     }
 
-    public String inputSubject(String sub){
+    public String inputSubject(String sub) {
         subjects.sendKeys(sub);
         pressEnter(subjects);
+        scroll(submit);
         return sub;
     }
 
-    public void uploadPicture(String filePath){
+    public void uploadPicture(String filePath) {
         try {
             selectPicture.sendKeys(filePath);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.getStackTrace();
             System.out.println("Файл не найден");
         }
     }
 
-    public String inputCurrentAddress(String address){
+    public String inputCurrentAddress(String address) {
         currentAddress.sendKeys(address);
         return address;
     }
 
-    public void selectUserState(){
+    public void selectUserState() {
         stateDropdown.click();
         stateDropdownIndicator.click();
     }
 
-    public void selectUserCity(){
+    public void selectUserCity() {
         selectCity.click();
         cityDropdownIndicator.click();
     }
 
-    public void clickSubmit(){
+    public void clickSubmit() {
         submit.click();
     }
 

@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 public class SovcomJobOpeningsStep extends AbstractSovcom {
     Logger logger = Logger.getLogger(SovcomJobOpeningsStep.class);
+
     @Step
     public SovcomJobOpeningsPage positiveScenarioStep() {
         SovcomMainPage mainPage = new SovcomMainPage(driver);

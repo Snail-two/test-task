@@ -11,7 +11,7 @@ public class SovcomMainPage {
 
     private WebDriver driver;
 
-    public SovcomMainPage(WebDriver driver){
+    public SovcomMainPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -25,15 +25,15 @@ public class SovcomMainPage {
     @FindBy(css = ".close-btn img")
     private WebElement modalWindow;
 
-    public void clickVacancy(){
+    public void clickVacancy() {
         vacancy.click();
     }
 
-    public void closeModalWindow(){
+    public void closeModalWindow() {
         modalWindowButtonClose.click();
     }
 
-    public boolean checkModalWindow(){
+    public boolean checkModalWindow() {
         return modalWindow.isDisplayed();
     }
 }

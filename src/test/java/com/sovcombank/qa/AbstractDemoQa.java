@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
 @Getter
 abstract public class AbstractDemoQa {
     public static WebDriver driver;
@@ -31,7 +32,7 @@ abstract public class AbstractDemoQa {
     }
 
     @AfterAll
-    public static void stopBrowser() throws InterruptedException {
+    public static void stopBrowser() {
         logger.info("Закрытие браузера");
         try {
             Thread.sleep(5000);

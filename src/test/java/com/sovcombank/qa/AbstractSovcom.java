@@ -30,7 +30,7 @@ abstract public class AbstractSovcom {
     }
 
     @AfterAll
-    public static void stopBrowser() throws InterruptedException {
+    public static void stopBrowser() {
         logger.info("Закрытие браузера");
         try {
             Thread.sleep(5000);

@@ -12,7 +12,7 @@ import static com.sovcombank.qa.endpoints.Endpoints.URL_RANDOM_API;
 
 public class RandomUserApiPositiveSteps {
     @Step
-    public Response sendPositiveRequest(){
+    public Response sendPositiveRequest() {
         Response response = RestAssured.given().log().all()
                 .when()
                 .contentType(ContentType.JSON)
@@ -23,7 +23,7 @@ public class RandomUserApiPositiveSteps {
     }
 
     @Step
-    public Response sendPositiveRequestUseQueryParams(Map<String, String> queryParameter1, Map<String, Integer> queryParameter2){
+    public Response sendPositiveRequestUseQueryParams(Map<String, String> queryParameter1, Map<String, Integer> queryParameter2) {
         Response response = RestAssured.given().log().all()
                 .when()
                 .contentType(ContentType.JSON)

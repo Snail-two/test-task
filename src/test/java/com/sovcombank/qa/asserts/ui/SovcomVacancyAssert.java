@@ -1,8 +1,6 @@
 package com.sovcombank.qa.asserts.ui;
 
 import com.sovcombank.qa.page.SovcomJobOpeningsPage;
-import com.sovcombank.qa.page.SovcomMainPage;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
