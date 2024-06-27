@@ -1,6 +1,5 @@
 package com.sovcombank.qa;
 
-import lombok.Getter;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,13 +10,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-@Getter
-abstract public class AbstractDemoQa {
+abstract public class AbstractSovcom {
     public static WebDriver driver;
     public static WebDriverWait wait;
     public static ChromeOptions options;
 
-    public static Logger logger = Logger.getLogger(AbstractDemoQa.class.getName());
+    public static Logger logger = Logger.getLogger(AbstractSovcom.class.getName());
 
     @BeforeAll
     public static void setup() {
@@ -26,9 +24,9 @@ abstract public class AbstractDemoQa {
         options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         driver.manage().window().maximize();
-        driver.get(ConfProperties.getProperty("demo_qa"));
+        driver.get(ConfProperties.getProperty("sovcom"));
     }
 
     @AfterAll
