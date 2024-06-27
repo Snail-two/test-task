@@ -20,8 +20,6 @@ public class PracticeFormAsserts extends PracticeFormPage {
     public void checkModalWindow(){
         assertTrue(getModalContent().isDisplayed());
     }
-
-    //TODO: Переделать асерты (мне не нравится как сделано сейчас)
     //TODO: Добавить проверку на корректность заголовка модального окна
     public void checkResultModalWindow(){
         Map<String, String> formData = new HashMap<>();

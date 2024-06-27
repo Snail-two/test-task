@@ -16,7 +16,7 @@ public class PracticeFormStep extends AbstractDemoQa {
 
     public Logger logger = Logger.getLogger(AbstractDemoQa.class.getName());
 
-    @Step("Корректное заполнение всех полей")
+    @Step
     public PracticeFormPage fillingFieldsValidData() {
         page = new PracticeFormPage(driver);
         asserts = new PracticeFormAsserts(driver);

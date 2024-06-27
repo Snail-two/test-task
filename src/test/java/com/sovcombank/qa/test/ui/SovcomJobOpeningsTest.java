@@ -4,23 +4,13 @@ import com.sovcombank.qa.AbstractSovcom;
 import com.sovcombank.qa.asserts.ui.SovcomVacancyAssert;
 import com.sovcombank.qa.page.SovcomJobOpeningsPage;
 import com.sovcombank.qa.page.SovcomMainPage;
+import com.sovcombank.qa.steps.ui.SovcomJobOpeningsStep;
 import org.junit.jupiter.api.Test;
 
-public class SovcomJobOpeningsTest extends AbstractSovcom {
+public class SovcomJobOpeningsTest extends SovcomJobOpeningsStep {
 
     @Test
     public void vacancy() {
-        SovcomMainPage mainPage = new SovcomMainPage(driver);
-        SovcomJobOpeningsPage vacancyPage = new SovcomJobOpeningsPage(driver);
-        SovcomVacancyAssert vacancyAssert = new SovcomVacancyAssert(driver);
-        if (mainPage.checkModalWindow()) {
-            mainPage.closeModalWindow();
-        }
-        mainPage.clickVacancy();
-        vacancyPage.selectCityDropDown();
-        vacancyPage.selectCity();
-        vacancyPage.selectCompanyDropDown();
-        vacancyPage.selectCompany();
-        vacancyAssert.checkCityInResults();
+        SovcomJobOpeningsPage page = positiveScenarioStep();
     }
 }

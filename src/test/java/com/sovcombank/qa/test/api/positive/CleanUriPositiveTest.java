@@ -26,13 +26,13 @@ public class CleanUriPositiveTest extends CleanUriPositiveSteps {
         for (int i = 0; i < list.size(); i++){
             var body = getResourceAsString("body_url.json")
                     .replace("value", LinkProperties.getProperty(list.get(i)));
-            var result = sendPositiveRequest(body);
+            var response = sendPositiveRequest(body);
 
             logger.info("Проверка json схемы");
-            result.then().assertThat().body(matchesJsonSchemaInClasspath("positive_cleanUp_api.json"));
+            response.then().assertThat().body(matchesJsonSchemaInClasspath("positive_cleanUp_api.json"));
 
             logger.info("Проверка статус кода");
-            result.then().assertThat().statusCode(200);
+            response.then().assertThat().statusCode(200);
         }
 
     }

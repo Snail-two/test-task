@@ -23,22 +23,22 @@ public class RandomUserApiNegativeTest extends RandomUserApiNegativeSteps {
     @DisplayName("Вызов метода с некорректным типом запроса")
     public void sendNegativeRequestUseNegativeMethodTest() {
         logger.info("Вызов метода с типом запроса POST");
-        var negativePost = sendNegativeRequest(post);
+        var negativePost = sendNegativeRequestUseNegativeMethod(post);
         logger.info("Проверка статус кода");
         negativePost.then().assertThat().statusCode(404);
 
         logger.info("Вызов метода с типом запроса PATCH");
-        var negativePatch = sendNegativeRequest(patch);
+        var negativePatch = sendNegativeRequestUseNegativeMethod(patch);
         logger.info("Проверка статус кода");
         negativePatch.then().assertThat().statusCode(404);
 
         logger.info("Вызов метода с типом запроса PUT");
-        var negativePut = sendNegativeRequest(put);
+        var negativePut = sendNegativeRequestUseNegativeMethod(put);
         logger.info("Проверка статус кода");
         negativePut.then().assertThat().statusCode(404);
 
         logger.info("Вызов метода с типом запроса DELETE");
-        var negativeDelete = sendNegativeRequest(delete);
+        var negativeDelete = sendNegativeRequestUseNegativeMethod(delete);
         logger.info("Проверка статус кода");
         negativeDelete.then().assertThat().statusCode(404);
     }

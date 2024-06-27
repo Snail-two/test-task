@@ -15,28 +15,28 @@ public class RandomUserApiPositiveTest extends RandomUserApiPositiveSteps {
     Logger logger = Logger.getLogger(RandomUserApiPositiveTest.class.getName());
 
     @Test
-    @DisplayName("Выполнение корректного запроса без параметров")
-    public void sendPositiveTest() {
+    @DisplayName("Выполнение корректного метода без параметров")
+    public void sendPositiveRequestTest() {
         logger.info("Запуск теста");
-        var positiveTest = sendPositiveRequest();
-        positiveTest.then().assertThat().body(matchesJsonSchemaInClasspath("positive_random_api.json"));
+        var response = sendPositiveRequest();
+        response.then().assertThat().body(matchesJsonSchemaInClasspath("positive_random_api.json"));
     }
 
     @Test
-    @DisplayName("Выполнение корректного запроса с параметрами")
+    @DisplayName("Выполнение корректного метода с параметрами")
     public void sendPositiveTestUseQueryParamsTest() {
         Map<String, String> queryParams1 = Map.of("gender", "female");
         Map<String, Integer> queryParams2 = Map.of("results", 2);
         logger.info("Вызов метода");
-        var positiveRequestUseQueryParams = sendPositiveRequestUseQueryParams(queryParams1, queryParams2);
+        var response = sendPositiveRequestUseQueryParams(queryParams1, queryParams2);
         logger.info("Проверка json схемы на валидность");
-        positiveRequestUseQueryParams.then().assertThat().body(matchesJsonSchemaInClasspath("positive_random_api.json"));
+        response.then().assertThat().body(matchesJsonSchemaInClasspath("positive_random_api.json"));
 
         logger.info("Проверка статус кода");
-        positiveRequestUseQueryParams.then().assertThat().statusCode(200);
+        response.then().assertThat().statusCode(200);
 
         logger.info("Проверка значений переданных в параметрах и полученных в ответе");
-        String text = positiveRequestUseQueryParams.jsonPath().getString("results[0].gender");
+        String text = response.jsonPath().getString("results[0].gender");
         Assertions.assertEquals(queryParams1.get("gender"), text);
     }
 }
