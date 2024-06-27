@@ -10,51 +10,44 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SovcomJobOpeningsPage extends AbstractSovcom {
-
     private WebDriver driver;
-
     private JavascriptExecutor js;
+
     public SovcomJobOpeningsPage(WebDriver driver) {
         this.driver = driver;
         this.js = (JavascriptExecutor) driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//input[@id='1']")
-    WebElement cityInput;
-
-    @FindBy(xpath = "//div[@role='listbox']//div[text()='Москва']")
-    WebElement moscowOption;
-
-    @FindBy(id = "2")
-    public WebElement company;
-
-    @FindBy(id = "input-1039")
+    @FindBy(xpath = "//label[contains(.,'Город')]")
+    public WebElement cityDropDown;
+    @FindBy(xpath = "//div[@role='listbox']//div[contains(text(),'Москва')]")
+    public WebElement elementCityDropDown;
+    @FindBy(xpath = "//label[contains(.,'Компания')]")
+    public WebElement companyDropdown;
+    @FindBy(xpath = "//div[@role='option']//div[contains(text(),'Совкомбанк Технологии')]")
     public WebElement dropDownCompany;
+    @FindBy(xpath = "//label[contains(.,'Тип занятости')]")
+    public WebElement scrollElement;
 
-    @FindBy(xpath = "//div[@aria-expanded='true']")
-    public WebElement divInputSlot;
-
-    @FindBy(xpath = "//div[contains(@class, 'search-cities')]")
-    public WebElement divThemeFlat;
-
-    public void selectCity(String cityName) {
-        clickElement(divThemeFlat);
-        cityInput.sendKeys(cityName);
-        wait.until(ExpectedConditions.visibilityOf(moscowOption));
-        clickElement(moscowOption);
+    public void scroll(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public void selectDropDownCompany() {
-        clickElement(company);
-        clickElement(dropDownCompany);
+    public void selectCityDropDown() {
+        wait.until(ExpectedConditions.visibilityOf(cityDropDown)).click();
     }
 
-    private void clickElement(WebElement element) {
-        try {
-            element.click();
-        } catch (ElementClickInterceptedException e) {
-            js.executeScript("arguments[0].click();", element);
-        }
+    public void selectCity() {
+        wait.until(ExpectedConditions.elementToBeClickable(elementCityDropDown)).click();
+    }
+
+    public void selectCompanyDropDown() {
+        wait.until(ExpectedConditions.visibilityOf(companyDropdown)).click();
+        scroll(scrollElement);
+    }
+
+    public void selectCompany() {
+        wait.until(ExpectedConditions.elementToBeClickable(dropDownCompany)).click();
     }
 }

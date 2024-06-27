@@ -15,6 +15,9 @@ public class SovcomJobOpeningsTest extends AbstractSovcom {
             mainPage.closeModalWindow();
         }
         mainPage.clickVacancy();
-        jobPage.selectCity("Москва");
+        jobPage.selectCityDropDown();
+        jobPage.selectCity();
+        jobPage.selectCompanyDropDown();
+        jobPage.selectCompany();
     }
 }
