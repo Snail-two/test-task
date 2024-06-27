@@ -4,6 +4,8 @@ import com.sovcombank.qa.LinkProperties;
 import com.sovcombank.qa.steps.api.positive.*;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,6 +18,7 @@ public class CleanUriPositiveTest extends CleanUriPositiveSteps {
     Logger logger = Logger.getLogger(CleanUriPositiveTest.class);
 
     @Test
+    @DisplayName("Вызов корректного метода")
     public void sendPositiveRequestTest() throws IOException {
         logger.info("Вызов метода");
         List<String> list = List.of("url_1", "url_2", "url_3");

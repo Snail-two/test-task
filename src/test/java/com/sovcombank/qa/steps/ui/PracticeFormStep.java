@@ -21,11 +21,11 @@ public class PracticeFormStep extends AbstractDemoQa {
         page = new PracticeFormPage(driver);
         asserts = new PracticeFormAsserts(driver);
         logger.info("Заполнение поля 'First Name'");
-        page.inputFirstNameLine("Олег");
+        page.inputFirstNameLine("Дмитрий");
         logger.info("Заполнение поля 'Last Name'");
-        page.inputLastNameLine("Олег");
+        page.inputLastNameLine("Селиванов");
         logger.info("Заполнение поля 'User email'");
-        page.inputUserEmailLine("name@gmail.com");
+        page.inputUserEmailLine("selivanovds@gmail.com");
         logger.info("Выбор пола");
         page.selectGenderMale();
         logger.info("Заполнение поля 'Mobile Number'");

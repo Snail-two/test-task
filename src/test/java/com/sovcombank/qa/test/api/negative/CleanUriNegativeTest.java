@@ -5,6 +5,7 @@ import com.sovcombank.qa.steps.api.negative.CleanUriNegativeSteps;
 import io.restassured.http.Method;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.sovcombank.qa.AbstractApi.getResourceAsString;
@@ -20,6 +21,7 @@ public class CleanUriNegativeTest extends CleanUriNegativeSteps {
 
     Logger logger = Logger.getLogger(CleanUriNegativeTest.class);
     @Test
+    @DisplayName("Вызов метода без тела запроса")
     public void sendRequestNullBodyTest(){
         logger.info("Вызов метода");
         var response = sendRequestNullBody();
@@ -36,6 +38,7 @@ public class CleanUriNegativeTest extends CleanUriNegativeSteps {
     }
 
     @Test
+    @DisplayName("Вызов метода с невалидным типом запроса")
     public void sendRequestInvalidMethodTest(){
         var body = getResourceAsString("body_url.json")
                 .replace("value", LinkProperties.getProperty(("url_1")));

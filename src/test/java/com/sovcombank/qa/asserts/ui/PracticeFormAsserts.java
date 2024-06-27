@@ -25,11 +25,11 @@ public class PracticeFormAsserts extends PracticeFormPage {
     //TODO: Добавить проверку на корректность заголовка модального окна
     public void checkResultModalWindow(){
         Map<String, String> formData = new HashMap<>();
-        formData.put("Student Name", "Олег Олег");
-        formData.put("Student Email", "name@gmail.com");
+        formData.put("Student Name", "Дмитрий Селиванов");
+        formData.put("Student Email", "selivanovds@gmail.com");
         formData.put("Gender", "Male");
         formData.put("Mobile", "7788556699");
-        formData.put("Date of Birth", "26 June,2024");
+        formData.put("Date of Birth", "27 June,2024");
         formData.put("Subjects", "English");
         formData.put("Hobbies", "Music");
         formData.put("Picture", "image.jpg");
