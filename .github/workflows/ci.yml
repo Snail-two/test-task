@@ -16,8 +16,5 @@ jobs:
           distribution: 'adopt'
           java-version: '20'
 
-      - name: Build with Maven
-        run: mvn clean install
-
       - name: Run test
         run: mvn clean test
