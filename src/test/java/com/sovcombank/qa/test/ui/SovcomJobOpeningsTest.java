@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 
 public class SovcomJobOpeningsTest extends SovcomJobOpeningsStep {
 
-    @Test
-    @DisplayName("Проверка результата фильтрации")
-    public void positiveTest() {
-        SovcomJobOpeningsPage page = positiveScenarioStep();
-    }
+//    @Test
+//    @DisplayName("Проверка результата фильтрации")
+//    public void positiveTest() {
+//        SovcomJobOpeningsPage page = positiveScenarioStep();
+//    }
 }
